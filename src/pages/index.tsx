@@ -4,6 +4,7 @@ import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {deleteProduct, getProducts} from "@/api/products";
 import {toast} from "react-toastify";
 import {Login} from "@/components/auth/Login";
+import {SignUp} from "@/components/auth/SignUp";
 
 type Props = {};
 
@@ -26,7 +27,10 @@ export default function Home(props: Props) {
 
     return (
         <main className={'flex min-h-screen flex-col items-center p-24'}>
-            <Login/>
+            <div className={'flex gap-4'}>
+                <SignUp/>
+                <Login/>
+            </div>
             <ul>
                 {
                     productData &&

@@ -23,12 +23,20 @@ export function Login() {
             }
         })
     }
+    const logoutHandler = ()=>{
+        localStorage.removeItem('token')
+        toast.success("you logged out successfully")
+    }
     
     return (
         <form className={'flex flex-col mb-4'} onSubmit={handleSubmit(onSubmitHandler)}>
             <input className={'border p-2'} type={"text"} {...register("identifier", {required: 'username is required'})} placeholder={"username"}/>
             <input className={'border p-2'} type={"password"} {...register("password", {required: 'password is required'})} placeholder={"password"}/>
-            <input className={'border p-2 rounded'} type="submit" value={"login"}/>
+            <div className={'grid grid-cols-2 gap-4'}>
+                <input className={'border p-2 rounded'} type="submit" value={"login"}/>
+                <input className={'border p-2 rounded'} type="button" value={"logout"} onClick={logoutHandler}/>
+            </div>
+            <input type="button" value={'showPassword'}/>
         </form>
     );
 }
